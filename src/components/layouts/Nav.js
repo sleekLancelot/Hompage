@@ -5,15 +5,6 @@ import logo from '../assets/FHGC weblogo.png';
 
 
 const Nav = () => {
-    let location = useLocation()
-    useEffect(() => {
-        if (location.pathname.slice(1, location.pathname.length)) {
-            setNotHome(() => true)
-        } else {
-            setNotHome(() => false)
-        }
-    }, [location.pathname])
-
     const [navScroll, setNavScroll] = useState(false)
     const [notHome, setNotHome] = useState(false)
 
@@ -21,15 +12,29 @@ const Nav = () => {
     let Nav = useRef('Nav')
     let NavUL = useRef('NavUL')
 
-    const onScroll = () => {
-        if (window.pageYOffset > 100 && Nav.current) {
-            setNavScroll(() => true)
-        } else if (window.pageYOffset < 100 && Nav.current) {
-            setNavScroll(() => false)
-        }
-    }
+    let location = useLocation()
 
-    document.addEventListener('scroll', onScroll)
+    useEffect(() => {
+        const onScroll = () => {
+            if (window.pageYOffset > 100 && Nav.current) {
+                setNavScroll(() => true)
+            } else if (window.pageYOffset < 100 && Nav.current) {
+                setNavScroll(() => false)
+            }
+        }
+
+        window.addEventListener('scroll', onScroll)
+
+        return () => window.removeEventListener('scroll', onScroll)
+    }, [])
+
+    useEffect(() => {
+        if (location.pathname.slice(1, location.pathname.length)) {
+            setNotHome(() => true)
+        } else {
+            setNotHome(() => false)
+        }
+    }, [location.pathname])
 
     const logoClick = (e) => {
         if (button.current.ariaExpanded) {
@@ -81,9 +86,10 @@ const Nav = () => {
                         <Link className="nav-link" to='/about'>About</Link>
                     </li>
                     <li className="nav-item dropdown">
-                        <Link className="nav-link dropdown-toggle" to='/product' id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <Link className="nav-link" to='/product' id="navbarDropdown" data-toggle="collapse" data-target="#navbarSupportedContent">
                             Product
-        </Link>
+                        </Link>
+                        <span className='dropdown-toggle' role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i className="fas fa-chevron-circle-down"></i></span>
                         <div className="dropdown-menu" aria-labelledby="navbarDropdown">
 
                             <Link className="dropdown-item" to='/#' data-toggle="collapse" data-target="#navbarSupportedContent">Verification Service</Link>
@@ -99,9 +105,10 @@ const Nav = () => {
                         </div>
                     </li>
                     <li className="nav-item dropdown">
-                        <Link className="nav-link dropdown-toggle" to='/#' id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <Link className="nav-link" to='/our-estate' id="navbarDropdown" data-toggle="collapse" data-target="#navbarSupportedContent">
                             Our Estate
-        </Link>
+                        </Link>
+                        <span className='dropdown-toggle' role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i className="fas fa-chevron-circle-down"></i></span>
                         <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                             <Link className="dropdown-item" to='/#' data-toggle="collapse" data-target="#navbarSupportedContent">The Fern Island</Link>
                             <Link className="dropdown-item" to='/#' data-toggle="collapse" data-target="#navbarSupportedContent">The Hive</Link>
@@ -120,10 +127,13 @@ const Nav = () => {
                 </div>
 
                 <div className="d-flex justify-content-end">
-                    <ScrollLink to='signUp' spy={true} smooth={true}>
-                        <button type="button" className="custom-btn btn btn-lg">Register/Login</button>
-                    </ScrollLink>
-
+                    {
+                        notHome ? <Link to='/login-register'>
+                            <button type="button" className="custom-btn btn btn-lg">Register/Login</button>
+                        </Link> : <ScrollLink to='signUp' spy={true} smooth={true}>
+                                <button type="button" className="custom-btn btn btn-lg">Register/Login</button>
+                            </ScrollLink>
+                    }
                 </div>
             </div>
         </nav>

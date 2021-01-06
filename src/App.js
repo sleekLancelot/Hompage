@@ -5,6 +5,7 @@ import Home from './components/pages/Home';
 import Footer from './components/layouts/Footer';
 import SearchModal from './components/layouts/SearchModal';
 import LorR from './components/pages/LorR';
+import Product from './components/pages/Product';
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
         <Switch>
           <Route exact path='/' children={<Home />} />
           <Route path='/login-register' children={<LorR />} />
+          <Route path='/product' children={<Product />} />
         </Switch>
         <Footer />
       </Router>

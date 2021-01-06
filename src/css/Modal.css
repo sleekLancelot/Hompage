@@ -66,8 +66,8 @@ div.searchCon {
     display: block;
     right: 0px;
     top: 0px;
-    text-align: center;
-    width: 220px;
+    text-align: inherit;
+    width: 80%;
     height: 70px;
     padding: 20px 10px 20px 10px;
     color: #ffffff !important;
