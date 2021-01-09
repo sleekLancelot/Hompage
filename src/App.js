@@ -5,7 +5,7 @@ import Home from './components/pages/Home';
 import Footer from './components/layouts/Footer';
 import SearchModal from './components/layouts/SearchModal';
 import LorR from './components/pages/LorR';
-import Product from './components/pages/Product';
+import Product from './components/pages/products/Product';
 
 function App() {
 

@@ -14,16 +14,22 @@ const Nav = () => {
 
     let location = useLocation()
 
+    const onScroll = () => {
+        if (window.pageYOffset > 100 && Nav.current) {
+            setNavScroll(() => true)
+        } else if (window.pageYOffset < 100 && Nav.current) {
+            setNavScroll(() => false)
+        }
+    }
+
     useEffect(() => {
-        const onScroll = () => {
-            if (window.pageYOffset > 100 && Nav.current) {
-                setNavScroll(() => true)
-            } else if (window.pageYOffset < 100 && Nav.current) {
-                setNavScroll(() => false)
-            }
+        if ((window.screen.width < 990 && window.pageYOffset > 100) || window.innerWidth < 990) {
+            Nav.current.classList.add('shadow')
+
         }
 
         window.addEventListener('scroll', onScroll)
+        window.addEventListener('touchmove', onScroll)
 
         return () => window.removeEventListener('scroll', onScroll)
     }, [])
@@ -36,12 +42,12 @@ const Nav = () => {
         }
     }, [location.pathname])
 
-    const logoClick = (e) => {
-        if (button.current.ariaExpanded) {
-            NavUL.current.classList.remove('show');
-        }
-        e.preventDefault()
-    }
+    // const logoClick = (e) => {
+    //     if (button.current.ariaExpanded) {
+    //         NavUL.current.classList.remove('show');
+    //     }
+    //     e.preventDefault()
+    // }
 
     // const unMountUL = (e) => {
     //     // eslint-disable-next-line eqeqeq
@@ -63,7 +69,7 @@ const Nav = () => {
 
     return (
         <nav ref={Nav} className={`navbar navbar-expand-lg sticky-top ${navScroll ? 'shadow' : 'inherit'} ${notHome ? 'navColorBlack' : 'inherit'}`}>
-            <div id='logo' onClick={logoClick}>
+            <div id='logo' data-toggle={`${button.current.ariaExpanded === 'true' && 'collapse'}`} data-target={`${button.current.ariaExpanded === 'true' && '#navbarSupportedContent'}`}>
                 <Link className="navbar-brand" to="/">
                     <img style={{ width: '150px' }} src={logo} alt="logo" />
                 </Link>

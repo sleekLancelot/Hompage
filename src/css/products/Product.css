@@ -4,7 +4,7 @@
     overflow: hidden;
     z-index: 1;
     padding: 120px 100px;
-    background: url(../components/assets/productAssets/about-bg.jpg) no-repeat center top/cover;
+    background: url(../../components/assets/productAssets/about-bg.jpg) no-repeat center top/cover;
 }
 
 .page-title h1 {
@@ -153,7 +153,7 @@
     position: relative;
 }
 
-/* .news-block .btn-box a {
+.news-block .btn-box a {
     position: relative;
     display: inline-block;
     font-size: 12px;
@@ -170,9 +170,10 @@
     background: none;
     color: var(--primary-color);
     border-color: var(--primary-color);
-} */
+    text-decoration: none;
+}
 
-.news-block .custom-btn {
+/* .news-block .custom-btn {
     background: var(--primary-color);
     box-shadow: var(--primary-shadow);
     margin-top: 0;
@@ -185,7 +186,7 @@
 .news-block .custom-btn a {
     color: #fff;
     text-decoration: none;
-}
+} */
 
 @media (min-width:1030px) {
     .news-section.alternate {
