@@ -15,6 +15,8 @@ import Fade from 'react-reveal/Fade';
 import HeadShake from 'react-reveal/HeadShake';
 import Con2 from './Con2';
 
+import '../../css/App.css';
+
 const Home = () => {
   const [current, setCurrent] = useState(0);
   const length = slides.length;

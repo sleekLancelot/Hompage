@@ -134,7 +134,7 @@ const Nav = () => {
 
                 <div className="d-flex justify-content-end">
                     {
-                        notHome ? <Link to='/login-register'>
+                        notHome ? <Link to='/login-signup'>
                             <button type="button" className="custom-btn btn btn-lg">Register/Login</button>
                         </Link> : <ScrollLink to='signUp' spy={true} smooth={true}>
                                 <button type="button" className="custom-btn btn btn-lg">Register/Login</button>
