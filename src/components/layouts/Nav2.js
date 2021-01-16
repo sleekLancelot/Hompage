@@ -4,7 +4,8 @@ import { Link as ScrollLink } from 'react-scroll'
 
 import logo from '../assets/FHGC weblogo.png';
 
-import '../../css/layouts/Nav.css'
+// import '../../css/layouts/Nav.css'
+import '../../css/layouts/PrefixedNav.css';
 
 const Nav2 = () => {
     const [navScroll, setNavScroll] = useState(false)

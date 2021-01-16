@@ -531,6 +531,12 @@ div.con3>div>h2 {
   margin-right: 25px;
 }
 
+@media (max-width:1150px) and (min-width:991px) {
+  .con3 div.col-sm div.svg {
+    width: 200px;
+  }
+}
+
 .con3 div.col-sm:hover div.svg {
   transform: rotate(-15deg);
 }
@@ -924,7 +930,8 @@ i.fa-tags {
   }
 
   .con3 div.col-sm div.chevron {
-    left: 70px;
+    /* left: 70px; */
+    left: 0px;
   }
 
   .con3 div.col-sm div.word p {

@@ -15,7 +15,8 @@ import Fade from 'react-reveal/Fade';
 import HeadShake from 'react-reveal/HeadShake';
 import Con2 from './Con2';
 
-import '../../css/App.css';
+// import '../../css/App.css';
+import '../../css/indexPrefix.css';
 
 const Home = () => {
   const [current, setCurrent] = useState(0);
