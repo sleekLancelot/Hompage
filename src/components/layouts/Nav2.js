@@ -165,7 +165,7 @@ const Nav2 = () => {
                     </div>
                     <ul className="navigation clearfix" onClick={unMountUL}>
 
-                        <li><Link to="/login-signup">login / SingUp</Link></li>
+                        <li><Link to="/login-signup">login / SignUp</Link></li>
 
 
 
